@@ -5,4 +5,4 @@ Ileri-Bilgisayar-Grafikleri-Projesi
 
 20217170008 - Ahmet Ongun
 
-- Köpek Kulübesi 
+- QT ortamında geliştirilmiş Köpek Kulübesi 
