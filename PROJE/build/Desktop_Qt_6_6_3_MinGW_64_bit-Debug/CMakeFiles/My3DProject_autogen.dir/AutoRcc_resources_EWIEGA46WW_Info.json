@@ -1,0 +1,19 @@
+{
+	"BUILD_DIR" : "C:/Users/90538/Desktop/PROJE/build/Desktop_Qt_6_6_3_MinGW_64_bit-Debug/My3DProject_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/90538/Desktop/PROJE/build/Desktop_Qt_6_6_3_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/90538/Desktop/PROJE/build/Desktop_Qt_6_6_3_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/90538/Desktop/PROJE",
+	"CMAKE_SOURCE_DIR" : "C:/Users/90538/Desktop/PROJE",
+	"INCLUDE_DIR" : "C:/Users/90538/Desktop/PROJE/build/Desktop_Qt_6_6_3_MinGW_64_bit-Debug/My3DProject_autogen/include",
+	"INPUTS" : [ "C:/Users/90538/Desktop/PROJE/texture/ground.jpg" ],
+	"LOCK_FILE" : "C:/Users/90538/Desktop/PROJE/build/Desktop_Qt_6_6_3_MinGW_64_bit-Debug/CMakeFiles/My3DProject_autogen.dir/AutoRcc_resources_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "resources" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_resources.cpp",
+	"RCC_EXECUTABLE" : "C:/Qt/6.6.3/mingw_64/./bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "C:/Users/90538/Desktop/PROJE/build/Desktop_Qt_6_6_3_MinGW_64_bit-Debug/CMakeFiles/My3DProject_autogen.dir/AutoRcc_resources_EWIEGA46WW_Used.txt",
+	"SOURCE" : "C:/Users/90538/Desktop/PROJE/resources.qrc",
+	"VERBOSITY" : 0
+}
