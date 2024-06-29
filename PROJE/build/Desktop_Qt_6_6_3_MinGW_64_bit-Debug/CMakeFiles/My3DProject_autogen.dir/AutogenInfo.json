@@ -413,7 +413,8 @@
 		"C:/Qt/6.6.3/mingw_64/lib/cmake/Qt63DExtras/Qt63DExtrasTargets.cmake",
 		"C:/Qt/6.6.3/mingw_64/lib/cmake/Qt63DExtras/Qt63DExtrasTargets-relwithdebinfo.cmake",
 		"C:/Qt/6.6.3/mingw_64/lib/cmake/Qt63DExtras/Qt63DExtrasAdditionalTargetInfo.cmake",
-		"C:/Qt/6.6.3/mingw_64/lib/cmake/Qt63DExtras/Qt63DExtrasVersionlessTargets.cmake"
+		"C:/Qt/6.6.3/mingw_64/lib/cmake/Qt63DExtras/Qt63DExtrasVersionlessTargets.cmake",
+		"C:/Users/90538/Desktop/PROJE/resources.qrc"
 	],
 	"CMAKE_SOURCE_DIR" : "C:/Users/90538/Desktop/PROJE",
 	"DEP_FILE" : "C:/Users/90538/Desktop/PROJE/build/Desktop_Qt_6_6_3_MinGW_64_bit-Debug/My3DProject_autogen/deps",

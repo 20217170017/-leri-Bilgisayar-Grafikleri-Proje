@@ -1,10 +1,13 @@
 My3DProject_autogen/timestamp: \
   C:/Qt/6.6.3/mingw_64/include/Qt3DCore/QEntity \
+  C:/Qt/6.6.3/mingw_64/include/Qt3DCore/QTransform \
+  C:/Qt/6.6.3/mingw_64/include/Qt3DCore/qcomponent.h \
   C:/Qt/6.6.3/mingw_64/include/Qt3DCore/qentity.h \
   C:/Qt/6.6.3/mingw_64/include/Qt3DCore/qnode.h \
   C:/Qt/6.6.3/mingw_64/include/Qt3DCore/qnodeid.h \
   C:/Qt/6.6.3/mingw_64/include/Qt3DCore/qt3dcore-config.h \
   C:/Qt/6.6.3/mingw_64/include/Qt3DCore/qt3dcore_global.h \
+  C:/Qt/6.6.3/mingw_64/include/Qt3DCore/qtransform.h \
   C:/Qt/6.6.3/mingw_64/include/Qt3DExtras/Qt3DWindow \
   C:/Qt/6.6.3/mingw_64/include/Qt3DExtras/qt3dextras_global.h \
   C:/Qt/6.6.3/mingw_64/include/Qt3DExtras/qt3dwindow.h \
@@ -18,6 +21,7 @@ My3DProject_autogen/timestamp: \
   C:/Qt/6.6.3/mingw_64/include/QtCore/QMetaType \
   C:/Qt/6.6.3/mingw_64/include/QtCore/QObject \
   C:/Qt/6.6.3/mingw_64/include/QtCore/QRect \
+  C:/Qt/6.6.3/mingw_64/include/QtCore/QTimer \
   C:/Qt/6.6.3/mingw_64/include/QtCore/q20functional.h \
   C:/Qt/6.6.3/mingw_64/include/QtCore/q20memory.h \
   C:/Qt/6.6.3/mingw_64/include/QtCore/q20type_traits.h \
@@ -31,6 +35,7 @@ My3DProject_autogen/timestamp: \
   C:/Qt/6.6.3/mingw_64/include/QtCore/qatomic.h \
   C:/Qt/6.6.3/mingw_64/include/QtCore/qatomic_cxx11.h \
   C:/Qt/6.6.3/mingw_64/include/QtCore/qbasicatomic.h \
+  C:/Qt/6.6.3/mingw_64/include/QtCore/qbasictimer.h \
   C:/Qt/6.6.3/mingw_64/include/QtCore/qbindingstorage.h \
   C:/Qt/6.6.3/mingw_64/include/QtCore/qbytearray.h \
   C:/Qt/6.6.3/mingw_64/include/QtCore/qbytearrayalgorithms.h \
@@ -118,6 +123,7 @@ My3DProject_autogen/timestamp: \
   C:/Qt/6.6.3/mingw_64/include/QtCore/qtdeprecationmarkers.h \
   C:/Qt/6.6.3/mingw_64/include/QtCore/qtenvironmentvariables.h \
   C:/Qt/6.6.3/mingw_64/include/QtCore/qtextstream.h \
+  C:/Qt/6.6.3/mingw_64/include/QtCore/qtimer.h \
   C:/Qt/6.6.3/mingw_64/include/QtCore/qtmetamacros.h \
   C:/Qt/6.6.3/mingw_64/include/QtCore/qtnoop.h \
   C:/Qt/6.6.3/mingw_64/include/QtCore/qtpreprocessorsupport.h \
@@ -142,14 +148,17 @@ My3DProject_autogen/timestamp: \
   C:/Qt/6.6.3/mingw_64/include/QtGui/qfont.h \
   C:/Qt/6.6.3/mingw_64/include/QtGui/qfontinfo.h \
   C:/Qt/6.6.3/mingw_64/include/QtGui/qfontmetrics.h \
+  C:/Qt/6.6.3/mingw_64/include/QtGui/qgenericmatrix.h \
   C:/Qt/6.6.3/mingw_64/include/QtGui/qicon.h \
   C:/Qt/6.6.3/mingw_64/include/QtGui/qimage.h \
   C:/Qt/6.6.3/mingw_64/include/QtGui/qkeysequence.h \
+  C:/Qt/6.6.3/mingw_64/include/QtGui/qmatrix4x4.h \
   C:/Qt/6.6.3/mingw_64/include/QtGui/qpaintdevice.h \
   C:/Qt/6.6.3/mingw_64/include/QtGui/qpalette.h \
   C:/Qt/6.6.3/mingw_64/include/QtGui/qpixelformat.h \
   C:/Qt/6.6.3/mingw_64/include/QtGui/qpixmap.h \
   C:/Qt/6.6.3/mingw_64/include/QtGui/qpolygon.h \
+  C:/Qt/6.6.3/mingw_64/include/QtGui/qquaternion.h \
   C:/Qt/6.6.3/mingw_64/include/QtGui/qregion.h \
   C:/Qt/6.6.3/mingw_64/include/QtGui/qrgb.h \
   C:/Qt/6.6.3/mingw_64/include/QtGui/qrgba64.h \
@@ -159,6 +168,9 @@ My3DProject_autogen/timestamp: \
   C:/Qt/6.6.3/mingw_64/include/QtGui/qtguiexports.h \
   C:/Qt/6.6.3/mingw_64/include/QtGui/qtguiglobal.h \
   C:/Qt/6.6.3/mingw_64/include/QtGui/qtransform.h \
+  C:/Qt/6.6.3/mingw_64/include/QtGui/qvector3d.h \
+  C:/Qt/6.6.3/mingw_64/include/QtGui/qvector4d.h \
+  C:/Qt/6.6.3/mingw_64/include/QtGui/qvectornd.h \
   C:/Qt/6.6.3/mingw_64/include/QtGui/qwindow.h \
   C:/Qt/6.6.3/mingw_64/include/QtGui/qwindowdefs.h \
   C:/Qt/6.6.3/mingw_64/include/QtGui/qwindowdefs_win.h \
@@ -703,4 +715,5 @@ My3DProject_autogen/timestamp: \
   C:/Users/90538/Desktop/PROJE/mainwindow.ui \
   C:/Users/90538/Desktop/PROJE/my3dwidget.cpp \
   C:/Users/90538/Desktop/PROJE/my3dwidget.h \
+  C:/Users/90538/Desktop/PROJE/resources.qrc \
   C:/Users/90538/Desktop/PROJE/ui_mainwindow.h

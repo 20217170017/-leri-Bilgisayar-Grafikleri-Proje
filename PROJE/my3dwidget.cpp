@@ -4,6 +4,10 @@
 #include <Qt3DCore/QTransform>
 #include <Qt3DCore/QEntity>
 #include <Qt3DRender/QCamera>
+#include <Qt3DRender/QDirectionalLight>
+#include <Qt3DRender/QTexture>
+#include <Qt3DExtras/QTextureMaterial>
+#include <Qt3DExtras/QDiffuseMapMaterial>
 
 My3DWidget::My3DWidget(QWidget *parent)
     : QWidget(parent)
@@ -25,6 +29,10 @@ My3DWidget::My3DWidget(QWidget *parent)
     // Köpek kulübesi için kök varlık oluştur
     rootEntity = new Qt3DCore::QEntity();
 
+    // Kök varlık için transform oluştur
+    rootTransform = new Qt3DCore::QTransform();
+    rootEntity->addComponent(rootTransform);
+
     // Köpek kulübesi tabanı (dikdörtgen prizma)
     Qt3DCore::QEntity *baseEntity = new Qt3DCore::QEntity(rootEntity);
 
@@ -40,70 +48,114 @@ My3DWidget::My3DWidget(QWidget *parent)
     baseTransform->setTranslation(QVector3D(0.0f, 1.0f, 0.0f));
     baseEntity->addComponent(baseTransform);
 
-    // Malzeme oluştur ve rengini ayarla
-    Qt3DExtras::QPhongMaterial *baseMaterial = new Qt3DExtras::QPhongMaterial();
-    baseMaterial->setDiffuse(QColor("#DAA520")); // Açık odunsu kahverengi
+    // Doku malzemesi oluştur
+    Qt3DExtras::QDiffuseMapMaterial *baseMaterial = new Qt3DExtras::QDiffuseMapMaterial();
+    Qt3DRender::QTextureLoader *textureLoader = new Qt3DRender::QTextureLoader();
+    textureLoader->setSource(QUrl::fromLocalFile(":/jpg/resources/wood_texture.jpg"));
+    baseMaterial->setDiffuse(textureLoader);
     baseEntity->addComponent(baseMaterial);
 
-    // Köpek kulübesi çatısı (üçgen taban)
+    // Çatı
     Qt3DCore::QEntity *roofEntity = new Qt3DCore::QEntity(rootEntity);
 
-    // Piramidin oluşturulması
-    Qt3DCore::QEntity *pyramidEntity = new Qt3DCore::QEntity(rootEntity);
-    Qt3DExtras::QConeMesh *pyramidMesh = new Qt3DExtras::QConeMesh();
-    pyramidMesh->setTopRadius(0.0f); // Piramidin üst yarıçapı (0 olacak, yani üçgen)
-    pyramidMesh->setBottomRadius(2.0f); // Piramidin taban yarıçapı
-    pyramidMesh->setLength(2.0f); // Piramidin yüksekliği
-    pyramidMesh->setRings(100); // Piramidin kenar sayısı
-    pyramidMesh->setBottomRadius(3.0f); // Alt yarıçapı (dikdörtgen prizma)
-    pyramidEntity->addComponent(pyramidMesh);
+    // Çatı mesh'i oluştur
+    Qt3DExtras::QConeMesh *roofMesh = new Qt3DExtras::QConeMesh();
+    roofMesh->setTopRadius(0.0f); // Piramidin üst yarıçapı (0 olacak, yani üçgen)
+    roofMesh->setBottomRadius(3.0f); // Piramidin taban yarıçapı, artırıldı
+    roofMesh->setLength(3.0f); // Piramidin yüksekliği, artırıldı
+    roofMesh->setRings(100); // Piramidin kenar sayısı
+    roofEntity->addComponent(roofMesh);
 
+    // Çatı konumunu ayarla
+    Qt3DCore::QTransform *roofTransform = new Qt3DCore::QTransform();
+    roofTransform->setTranslation(QVector3D(0.0f, 3.5f, 0.0f)); // Piramidin konumu (dikdörtgen prizmanın üstünde)
+    roofEntity->addComponent(roofTransform);
 
-    Qt3DCore::QTransform *pyramidTransform = new Qt3DCore::QTransform();
-    pyramidTransform->setTranslation(QVector3D(0.0f, 3.0f, 0.0f)); // Piramidin konumu (dikdörtgen prizmanın üstünde)
-    pyramidTransform->setRotation(QQuaternion::fromAxisAndAngle(QVector3D(1, 0, 0), 0.0f)); // Piramidin dönüşü (isteğe bağlı)
-    pyramidEntity->addComponent(pyramidTransform);
+    // Çatı malzemesi oluştur
+    Qt3DExtras::QDiffuseMapMaterial *roofMaterial = new Qt3DExtras::QDiffuseMapMaterial();
+    Qt3DRender::QTextureLoader *roofTextureLoader = new Qt3DRender::QTextureLoader();
+    roofTextureLoader->setSource(QUrl::fromLocalFile(":/jpg/resources/roof_texture.jpg"));
+    roofMaterial->setDiffuse(roofTextureLoader);
+    roofEntity->addComponent(roofMaterial);
 
-    Qt3DExtras::QPhongMaterial *pyramidMaterial = new Qt3DExtras::QPhongMaterial();
-    pyramidMaterial->setDiffuse(QColor(QRgb(0xFFD700))); // Altın rengi
-    pyramidEntity->addComponent(pyramidMaterial);
-
-    // Köpek kulübesi için kapı (oval kapı)
+    // Kapı (dikdörtgen prizma)
     Qt3DCore::QEntity *doorEntity = new Qt3DCore::QEntity(rootEntity);
 
-    // Oval kapı mesh'i oluştur
-    Qt3DExtras::QCylinderMesh *doorMesh = new Qt3DExtras::QCylinderMesh();
-    doorMesh->setRadius(0.7f); // Oval kapının yarıçapı (X ve Z eksenlerinde)
-    doorMesh->setLength(0.2f); // Kapının kalınlığı (Y ekseninde)
-    doorMesh->setRings(100); // Kapının kenar sayısı (dairesel çözünürlük)
-    doorMesh->setSlices(20); // Kapının dilim sayısı (yönlü çözünürlük)
+    // Dikdörtgen prizma mesh'i oluştur
+    Qt3DExtras::QCuboidMesh *doorMesh = new Qt3DExtras::QCuboidMesh();
+    doorMesh->setXExtent(1.0f); // Genişlik
+    doorMesh->setYExtent(1.0f); // Yükseklik, yarıya düşürüldü
+    doorMesh->setZExtent(0.2f); // Kalınlık
     doorEntity->addComponent(doorMesh);
 
-    // Oval kapı konumunu ayarla
+    // Dikdörtgen prizma konumunu ayarla
     Qt3DCore::QTransform *doorTransform = new Qt3DCore::QTransform();
-    doorTransform->setTranslation(QVector3D(0.0f, 0.9f, 1.5f)); // Prizmanın yüzeyine göre konumu
-    doorTransform->setRotation(QQuaternion::fromAxisAndAngle(QVector3D(1, 0, 0), 90.0f)); // Kapının dönüşü (isteğe bağlı)
+    doorTransform->setTranslation(QVector3D(0.0f, 0.5f, 1.5f)); // Y konumu, yüksekliğe göre ayarlandı
     doorEntity->addComponent(doorTransform);
 
-    // Kapı için malzeme oluştur
-    Qt3DExtras::QPhongMaterial *doorMaterial = new Qt3DExtras::QPhongMaterial();
-    doorMaterial->setDiffuse(Qt::white); // Diffuse (yayılan) rengi beyaz olarak ayarla
+    // Kapı malzemesi oluştur
+    Qt3DExtras::QDiffuseMapMaterial *doorMaterial = new Qt3DExtras::QDiffuseMapMaterial();
+    Qt3DRender::QTextureLoader *doorTextureLoader = new Qt3DRender::QTextureLoader();
+    doorTextureLoader->setSource(QUrl::fromLocalFile(":/jpg/resources/door_texture.jpg"));
+    doorMaterial->setDiffuse(doorTextureLoader);
+
+    // Kapıya malzeme ekle
     doorEntity->addComponent(doorMaterial);
 
+    // Kapının üstüne tabela ekle
+    Qt3DCore::QEntity *signEntity = new Qt3DCore::QEntity(rootEntity);
 
+    // Tabela için dikdörtgen prizma oluştur
+    Qt3DExtras::QCuboidMesh *signMesh = new Qt3DExtras::QCuboidMesh();
+    signMesh->setXExtent(1.5f); // Genişlik
+    signMesh->setYExtent(0.5f); // Yükseklik
+    signMesh->setZExtent(0.2f); // Kalınlık
+    signEntity->addComponent(signMesh);
+
+    // Tabela konumunu ayarla
+    Qt3DCore::QTransform *signTransform = new Qt3DCore::QTransform();
+    signTransform->setTranslation(QVector3D(0.0f, 1.55f, 1.5f)); // Yükseklik ve konumu kapının hemen üstüne ayarla
+    signEntity->addComponent(signTransform);
+
+    // Tabela malzemesi oluştur
+    Qt3DExtras::QDiffuseMapMaterial *signMaterial = new Qt3DExtras::QDiffuseMapMaterial();
+    Qt3DRender::QTextureLoader *signTextureLoader = new Qt3DRender::QTextureLoader();
+    signTextureLoader->setSource(QUrl::fromLocalFile(":/jpg/resources/doghouse.jpg"));
+    signMaterial->setDiffuse(signTextureLoader);
+
+    // Tabelaya malzeme ekle
+    signEntity->addComponent(signMaterial);
 
     // Kamera
     Qt3DRender::QCamera *camera = view->camera();
     camera->lens()->setPerspectiveProjection(45.0f, 16.0f / 9.0f, 0.1f, 1000.0f);
-    camera->setPosition(QVector3D(0, 10, 10));
+    camera->setPosition(QVector3D(0, 3, 10));
     camera->setViewCenter(QVector3D(0, 0, 0));
 
     // Kamera kontrolcüsü
     Qt3DExtras::QOrbitCameraController *camController = new Qt3DExtras::QOrbitCameraController(rootEntity);
     camController->setCamera(camera);
 
+    // Işık ekle
+    Qt3DCore::QEntity *lightEntity = new Qt3DCore::QEntity(rootEntity);
+    Qt3DRender::QDirectionalLight *light = new Qt3DRender::QDirectionalLight(lightEntity);
+    light->setColor("white");
+    light->setIntensity(1);
+    light->setWorldDirection(QVector3D(-1, -1, -1));
+    lightEntity->addComponent(light);
+
     // Kök varlık ayarları
     view->setRootEntity(rootEntity);
+
+    // Animasyon için timer oluştur
+    animationTimer = new QTimer(this);
+    connect(animationTimer, &QTimer::timeout, this, [=]() {
+        static float angle = 0.0f;
+        angle += 0.1f; // Dönme hızı (daha yavaş için daha küçük bir değer kullanabilirsiniz)
+        if (angle >= 360.0f) angle = 0.0f;
+        rootTransform->setRotation(QQuaternion::fromAxisAndAngle(QVector3D(0, 1, 0), angle));
+    });
+    animationTimer->start(16); // Timer 60 FPS için 16ms aralıklarla çalışacak
 }
 
 My3DWidget::~My3DWidget()

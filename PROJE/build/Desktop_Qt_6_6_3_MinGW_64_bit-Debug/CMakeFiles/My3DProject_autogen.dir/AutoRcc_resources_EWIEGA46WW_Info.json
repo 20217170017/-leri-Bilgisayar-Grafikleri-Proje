@@ -5,7 +5,13 @@
 	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/90538/Desktop/PROJE",
 	"CMAKE_SOURCE_DIR" : "C:/Users/90538/Desktop/PROJE",
 	"INCLUDE_DIR" : "C:/Users/90538/Desktop/PROJE/build/Desktop_Qt_6_6_3_MinGW_64_bit-Debug/My3DProject_autogen/include",
-	"INPUTS" : [ "C:/Users/90538/Desktop/PROJE/texture/ground.jpg" ],
+	"INPUTS" : 
+	[
+		"C:/Users/90538/Desktop/PROJE/resources/roof_texture.jpg",
+		"C:/Users/90538/Desktop/PROJE/resources/wood_texture.jpg",
+		"C:/Users/90538/Desktop/PROJE/resources/door_texture.jpg",
+		"C:/Users/90538/Desktop/PROJE/resources/doghouse.jpg"
+	],
 	"LOCK_FILE" : "C:/Users/90538/Desktop/PROJE/build/Desktop_Qt_6_6_3_MinGW_64_bit-Debug/CMakeFiles/My3DProject_autogen.dir/AutoRcc_resources_EWIEGA46WW_Lock.lock",
 	"MULTI_CONFIG" : false,
 	"OPTIONS" : [ "-name", "resources" ],

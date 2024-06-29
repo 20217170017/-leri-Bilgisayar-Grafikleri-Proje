@@ -1,5 +1,8 @@
 <RCC>
-    <qresource prefix="/ground">
-        <file>texture/ground.jpg</file>
+    <qresource prefix="/jpg">
+        <file>resources/roof_texture.jpg</file>
+        <file>resources/wood_texture.jpg</file>
+        <file>resources/door_texture.jpg</file>
+        <file>resources/doghouse.jpg</file>
     </qresource>
 </RCC>
